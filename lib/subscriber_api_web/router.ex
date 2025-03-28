@@ -20,6 +20,12 @@ defmodule SubscriberApiWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/api", SubscriberApiWeb.API.Emails do
+    pipe_through :api
+
+    resources "/emails", EmailSubscriptionController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", SubscriberApiWeb do
   #   pipe_through :api
